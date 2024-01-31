@@ -36,7 +36,7 @@ jobs:
             export GOARCH=arm64
             export CC=aarch64-linux-gnu-gcc
           fi
-          go build -o psiphond-${{ matrix.platform }}-release -v Server/main.go -tags "PSIPHON_INIT_COMMON_VALUES,PSIPHON_ENABLE_REFRACTION"
+          go build -x -tags "PSIPHON_INIT_COMMON_VALUES,PSIPHON_ENABLE_REFRACTION" -o psiphond-${{ matrix.platform }}-release -v Server/main.go
         
       - name: Upload
         uses: svenstaro/upload-release-action@2.7.0
