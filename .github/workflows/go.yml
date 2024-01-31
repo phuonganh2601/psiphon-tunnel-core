@@ -1,4 +1,4 @@
-name: Release Psiphone
+name: Release Psiphond
 
 on:
   workflow_dispatch:
@@ -36,13 +36,13 @@ jobs:
             export GOARCH=arm64
             export CC=aarch64-linux-gnu-gcc
           fi
-          go build -o psiphone-${{ matrix.platform }}-release -v Server/main.go
+          go build -o psiphond-${{ matrix.platform }}-release -v Server/main.go
         
       - name: Upload
         uses: svenstaro/upload-release-action@2.7.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref }}
-          file: psiphone-${{ matrix.platform }}-release
+          file: psiphond-${{ matrix.platform }}-release
           prerelease: true
           overwrite: true
